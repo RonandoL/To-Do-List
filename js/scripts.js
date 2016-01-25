@@ -7,7 +7,7 @@ function ToDo(task) {
 
 // User Interface Logic
 $(document).ready(function() {
-  $("#tasks").html(localStorage.getItem("taskItems"));
+  $("#tasks").html(localStorage.getItem("taskItems"));  // localStorage saves tasks on refresh
   $("form.toDoList").submit(function(event) {
     var taskInput = $(".task").val();
 
@@ -21,6 +21,7 @@ $(document).ready(function() {
   // CHECKBOX TWEAKS
   $(document).on("change", ".checkbox", function() {  // Remember, we're working with dynamic element here!
 // 8. keep checkbox checked/unchecked on refresh: if/else, "checked" is an attribute
+      // If/Else is JUST for checking the bo
       if ($(this).attr("checked")) {  // IF attribute "checked" is present??
           $(this).removeAttr("checked");  // then remove the attribute from input
       } else {
@@ -31,6 +32,7 @@ $(document).ready(function() {
       localStorage.setItem("taskItems", $("#tasks").html());
   });
 
+// Remove 'X' Tweaks
   $(document).on("click", ".remove", function() {
     $(this).parent().slideUp( 900, function() {  // animation slideUp really sloww
         $(this).remove();
